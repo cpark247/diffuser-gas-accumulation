@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use these setups or scripts, please cite the paper."
+title: "diffuser-gas-accumulation: simulation setups and post-processing for passive mitigation of gas accumulation in a horizontal diffuser (hybrid Euler-Euler/VoF, URANS and LES)"
+type: software
+authors:
+  - family-names: Park
+    given-names: Changkyu
+    affiliation: "Chair of Hydraulic Fluid Machinery, Ruhr University Bochum"
+repository-code: "https://github.com/cpark247/diffuser-gas-accumulation"
+license: MIT
+preferred-citation:
+  type: article
+  title: "Passive Mitigation of Gas Accumulation by Surface Structures in Diverging Flow Channels: A Three-Dimensional Two-Phase Flow Simulation Study"
+  authors:
+    - family-names: Park
+      given-names: Changkyu
+    - family-names: Mansour
+      given-names: Michael
+    - family-names: Thévenin
+      given-names: Dominique
+    - family-names: Skoda
+      given-names: Romuald
+  journal: "SSRN preprint"
+  year: 2026
+  url: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7649860"
