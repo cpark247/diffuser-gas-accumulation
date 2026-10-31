@@ -1,6 +1,6 @@
 cff-version: 1.2.0
-message: "If you use these setups or scripts, please cite the paper."
-title: "diffuser-gas-accumulation: simulation setups and post-processing for passive mitigation of gas accumulation in a horizontal diffuser (hybrid Euler-Euler/VoF, URANS and LES)"
+message: "If you use material from this repository, please cite the paper."
+title: "diffuser-gas-accumulation: passive mitigation of gas accumulation in a horizontal diffuser (hybrid Euler-Euler/VoF, URANS and LES)"
 type: software
 authors:
   - family-names: Park
@@ -8,6 +8,16 @@ authors:
     affiliation: "Chair of Hydraulic Fluid Machinery, Ruhr University Bochum"
 repository-code: "https://github.com/cpark247/diffuser-gas-accumulation"
 license: MIT
+keywords:
+  - OpenFOAM
+  - multiphase CFD
+  - bubbly flow
+  - hybrid Euler-Euler/VoF
+  - population balance
+  - large eddy simulation
+  - diffuser
+  - gas accumulation
+  - centrifugal pump
 preferred-citation:
   type: article
   title: "Passive Mitigation of Gas Accumulation by Surface Structures in Diverging Flow Channels: A Three-Dimensional Two-Phase Flow Simulation Study"

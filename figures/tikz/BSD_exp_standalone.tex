@@ -1,0 +1,59 @@
+\documentclass[tikz,border=5pt]{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\pgfplotsset{
+    /pgfplots/legend image code/.code={
+        \draw[#1] (0cm,-0.1cm) rectangle (0.3cm,0.1cm);
+    },
+}
+
+
+\begin{document}
+\begin{tikzpicture}
+\begin{axis}[
+    width=8cm, height=6cm,
+    label style={font=\fontsize{9pt}{12pt}\selectfont},
+    xlabel={Bubble diameter [mm]},
+    ylabel={Number density, $n$ [-]},
+    xmin=0, xmax=5,
+    ymin=0,
+    xtick={0,0.5,...,5},
+    xticklabel style={rotate=0, anchor=near xticklabel},
+    ytick pos=left,
+    xtick pos=left,
+    scaled y ticks=false,
+    yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},
+    ymajorgrids,
+    tick label style={font=\fontsize{8pt}{10pt}\selectfont},
+    % grid style={gray!25},
+    % axis line style={gray!60},
+    ybar,
+    bar width=0.08cm,
+    legend image code/.code={
+        \draw[#1] (0cm,-0.1cm) rectangle (0.3cm,0.1cm);
+    },
+    legend style={
+        at={(0.98,0.95)}, anchor=north east,
+        draw=black, fill=white,
+        font=\fontsize{8pt}{10pt}\selectfont
+    },
+    legend cell align={left},
+]
+
+\addplot[
+    fill=gray!70, fill opacity=0.55,
+    draw=none, line width=0.2pt,
+] table [x=D_center_mm, y=n, col sep=comma]
+    {plot_a_number_concentration_n_case5.csv};
+
+\addplot[
+    fill=red!70, fill opacity=0.25,
+    draw=none, line width=0.2pt,
+] table [x=D_center_mm, y=n, col sep=comma]
+    {plot_a_number_concentration_n_case6.csv};
+
+\legend{Case 5, Case 6}
+
+\end{axis}
+\end{tikzpicture}
+\end{document}

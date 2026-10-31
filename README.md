@@ -1,67 +1,78 @@
 # Passive mitigation of gas accumulation in diffusers
 
-**Bubbly flow in a horizontal diffuser separates, and the air collects in a pocket that blocks the passage. Can a small structure upstream prevent this?** This repository contains the simulation setups, post-processing and figure data for the study that answers that question with 2D URANS and 3D large-eddy simulations, validated against experiments.
+**Bubbly water flowing through a horizontal diffuser separates, and the air collects in a pocket that blocks the passage, the same mechanism that degrades centrifugal pumps conveying gas–liquid mixtures. Can a small structure upstream prevent it, and why does it work?** This repository presents the study that answers this with 2D URANS and 3D large-eddy simulations of a hybrid Euler–Euler/VoF solver with population balance, validated against experiments.
 
 [![SSRN preprint](https://img.shields.io/badge/preprint-SSRN%207649860-blue)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7649860)
 ![OpenFOAM v9](https://img.shields.io/badge/OpenFOAM-Foundation%20v9-2c7bb6)
-<!-- add once available: [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.XXXXXXX.svg)](https://doi.org/10.5281/zenodo.XXXXXXX) -->
+![Python](https://img.shields.io/badge/post--processing-Python-3776ab)
 
 ![Graphical abstract](docs/graphical_abstract.png)
+<sub>*Graphical abstract: a simplified graphic for illustration. Shapes, curves and some numbers are approximate; the exact values are given in [Results: 3D LES](docs/05_3d_les.md) and in [`data/`](data).*</sub>
 
-> C. Park, M. Mansour, D. Thévenin, R. Skoda. **Passive Mitigation of Gas Accumulation by Surface Structures in Diverging Flow Channels: A Three-Dimensional Two-Phase Flow Simulation Study.** Preprint: [SSRN 7649860](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7649860) <!-- add journal + DOI once published -->
+> C. Park, M. Mansour, D. Thévenin, R. Skoda. **Passive Mitigation of Gas Accumulation by Surface Structures in Diverging Flow Channels: A Three-Dimensional Two-Phase Flow Simulation Study.** Preprint, [SSRN 7649860](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7649860), 2026.
 
 ## Key findings
 
-- **Placement matters more than the device.** Air accumulation is mitigated only when turbulent mixing is raised *upstream* of the point where the phases separate. Structures that add turbulence further downstream do not break up the air pocket.
-- **A solid step removes the air pocket completely** (continuous-air fraction 0.089 → 0.000 in the 3D LES) **and improves pressure recovery.**
-- **Bars nearly remove it (−95.6 %) but lower pressure recovery below the unmodified diffuser**, because their form drag and wake losses outweigh the gain. Dispersing the gas and keeping the diffuser efficient are separate goals.
-- **Dissipation, not just turbulent kinetic energy, drives dispersion.** Bubble breakup competes with coalescence. The step raises both k and ε; the bars raise k but barely ε, so their breakup effect is local and weaker.
-- **Model limitation, stated openly:** the coalescence and breakup kernels are grid-dependent and sensitive to their constants. The predicted bubble size distribution is therefore not grid-independent, although the size and position of the air pocket are not affected.
+1. **Where the turbulence is generated matters more than how much.** Air accumulation is mitigated only if mixing is raised *upstream of the point where the phases separate*. In 2D URANS the bars failed because their turbulence started downstream of phase separation; moving them upstream restored the effect. In 3D LES, which places the separation point correctly, both structures act upstream of it.
+2. **The solid step removes the air pocket and improves pressure recovery.** Air void fraction in Case 4: experiment −94.3 %, LES −99.8 % (all air, α > 0.1) and −100 % (continuous air, α > 0.8). The pressure reaches its final level further upstream.
+3. **The bars break up the pocket into dispersed air, but do not improve pressure recovery.** LES: continuous air −91.8 %, while air including the dispersed part *rises* by 48.2 %; the experiment shows only −8.6 % for this operating point. Their pressure recovery stays below the plain diffuser (form drag, wakes, and a possible influence of the first bar on the reference tap). **Dispersing the gas and keeping the diffuser efficient are separate design goals.**
+4. **Dissipation, not just turbulent kinetic energy, drives dispersion.** Bubble breakup competes with coalescence, and the breakup kernel depends strongly on the dissipation rate ε. The step raises both k and ε; the bars raise k but ε only marginally, so their breakup activity stays local to the first few bars.
+5. **Limits of the model, stated openly.** The predicted bubble size distribution is effectively monodisperse, unlike the measured one, and the coalescence and breakup kernels are grid-dependent. Size and position of the air pocket are nevertheless unaffected by mono- vs polydisperse modelling.
 
-## Method
+![Pressure recovery](figures/output/pressure_recovery_3d.png)
+
+## Contents
 
 | | |
 |---|---|
-| Geometry | Horizontal diffuser, 40 × 44 mm inlet duct → 100 × 44 mm outlet duct; gravity normal to the main flow (emulates Coriolis forces in radial pump impellers) |
-| Configurations | Reference (no structure), solid cross-flow step, transverse bars |
-| Operating range | Re_w = 59 530 – 78 330 (Q_w = 9.5 – 12.5 m³/h); air injected upstream |
-| Two-phase model | Hybrid Euler–Euler / Volume-of-Fluid solver: dispersed bubbles and continuous air pockets in one framework, with population balance (Luo–Svendsen breakup, Prince–Blanch coalescence) |
-| Turbulence | 2D: URANS with k-ω SST over the full operating range. 3D: LES (WALE) for selected cases |
-| Interfacial forces | Drag and virtual mass (dominant in horizontal bubbly flow), surface tension (CSF) |
-| Validation | Experiments at Otto von Guericke University Magdeburg: shadowgraphy of the air pocket, bubble size distributions, wall pressure, LDA velocity (single phase) |
-| Code | OpenFOAM Foundation v9 + [OpenFOAM-PhD-Extensions](https://github.com/cpark247/OpenFOAM-PhD-Extensions) (hybrid solver family `multiphaseEulerFoamHSM`, extended from Hundshagen et al.) |
+| [**1 Background**](docs/01_background.md) | Why gas accumulates in pumps and diffusers, and what was missing |
+| [**2 Method**](docs/02_method.md) | Hybrid Euler–Euler/VoF solver, population balance, URANS and LES, numerics (with equations) |
+| [**3 Test case**](docs/03_test_case.md) | Diffuser geometry, experiment, mitigation structures, operating points |
+| [**4 Results: 2D URANS**](docs/04_2d_urans.md) | Parameter study over six operating points; why the bars failed in 2D |
+| [**5 Results: 3D LES**](docs/05_3d_les.md) | Validation, air void fractions, pressure recovery, breakup vs coalescence |
+| [**6 Conclusions and limitations**](docs/06_conclusions.md) | What carries over to pump design, and what the model cannot yet do |
+| [`cases/`](cases) | Simulation setup reference: domains, boundary conditions, grids, numerics |
+| [`data/`](data) | All plotted data of the paper as tidy CSV files, with provenance |
+| [`figures/`](figures) | `make_figures.py` re-plots the results from `data/`; publication TikZ sources |
+| [`postprocessing/`](postprocessing) | Python implementations of the paper's metrics and model equations, with tests |
 
-## Repository layout
+## Approach at a glance
 
+| | |
+|---|---|
+| Flow | Air–water, horizontal diffuser 40 × 44 mm → 100 × 44 mm, gravity normal to the main flow (emulates the Coriolis force in radial impellers), Re<sub>w</sub> = 59 530–78 330 |
+| Configurations | Reference (smooth wall), 8 mm solid cross-flow step 1.8 d<sub>h,u</sub> upstream, transverse bars (6 mm × 3 mm) along the diverging wall |
+| Two-phase model | Hybrid Euler–Euler / VoF: Euler–Euler for dispersed bubbles, blended to VoF-like interface capturing for coherent air pockets; drag and virtual mass; population balance with 10 size classes (Luo–Svendsen breakup, Prince–Blanch coalescence) |
+| Turbulence | 2D: URANS, k-ω SST (6 operating points). 3D: wall-resolved LES, WALE (Case 4), kernels driven by resolved + modelled dissipation |
+| Inflow (3D) | Two-phase precursor LES of a 60 d<sub>h,u</sub> duct (≈ 13 M cells), looped as time-resolved inlet |
+| Grids | 2D: 9 000–13 000 cells. 3D: 2.5–2.9 M cells, mean y⁺ ≈ 3, mean Δ/η below ≈ 15 |
+| Validation | Shadowgraphy (air pocket), bubble size distributions, wall pressure, LDA velocity (single phase) |
+| Code | OpenFOAM Foundation v9 + [OpenFOAM-PhD-Extensions](https://github.com/cpark247/OpenFOAM-PhD-Extensions) (solver family `multiphaseEulerFoamHSM`) |
+
+## Reproducing the plots
+
+```bash
+pip install -r requirements.txt
+python figures/make_figures.py                  # re-plots all quantitative figures into figures/output/
+python postprocessing/tests/test_postprocessing.py
+python postprocessing/pbm_kernels.py            # breakup vs coalescence time scales vs dissipation rate
 ```
-cases/            OpenFOAM case setups (0.orig/, constant/, system/) per configuration
-postprocessing/   Python scripts that turn raw OpenFOAM output into the figure data
-figures/          figure data (CSV) and the scripts that plot each paper figure
-data/             pointer to the full field data on Zenodo (too large for git)
-docs/             graphical abstract and repository images
-```
 
-`figures/README.md` maps every paper figure to the script and data that produce it.
+The OpenFOAM case dictionaries and field data are not part of this repository; [`cases/`](cases) documents the setups in enough detail to rebuild them.
 
-## Reproducing the results
+## Contributions
 
-1. Build [OpenFOAM-PhD-Extensions](https://github.com/cpark247/OpenFOAM-PhD-Extensions) against OpenFOAM Foundation v9.
-2. Run a configuration from `cases/` (see `cases/README.md`). The 3D LES need an HPC cluster; the cost of each run is listed per case.
-3. Either use your own results or download the processed data from Zenodo (`data/README.md`), then run the scripts in `figures/`.
+Simulations, post-processing and analysis: C. Park and R. Skoda (Chair of Hydraulic Fluid Machinery, Ruhr University Bochum). Experiments: M. Mansour and D. Thévenin (Otto von Guericke University Magdeburg).
 
 ## Related
 
-- [OpenFOAM-PhD-Extensions](https://github.com/cpark247/OpenFOAM-PhD-Extensions): solver and models used here
-- [turbulence-validation-OF9](https://github.com/cpark247/turbulence-validation-OF9): preliminary single-phase turbulence-modelling studies from the same doctoral project (not used for the results here)
+- [OpenFOAM-PhD-Extensions](https://github.com/cpark247/OpenFOAM-PhD-Extensions): solver family and models used here
+- [turbulence-validation-OF9](https://github.com/cpark247/turbulence-validation-OF9): preliminary single-phase turbulence-modelling studies from the same doctoral project (not used for these results)
 
 ## Acknowledgements
 
 Supported by the Federal Ministry for Economic Affairs and Energy (BMWE) based on a decision by the German Bundestag, research project number 01IF 23051 N, and by the Verband Deutscher Maschinen- und Anlagenbau e.V. (VDMA) Pumps + Systems. Computing time was provided by the NHR Center NHR4CES at RWTH Aachen University (project p0021456).
 
-## Citation
+## Citation and licence
 
-Please cite the paper above. The repository itself can be cited via `CITATION.cff` (and the Zenodo DOI once minted).
-
-## Licence
-
-Scripts and case setups: MIT (see `LICENSE`). Experimental data are not redistributed here; see `data/README.md`.
+Please cite the paper above (see `CITATION.cff`). Code and documentation: MIT (see `LICENSE`). Experimental data and images belong to the experimental partners and are shown as published in the paper.

@@ -1,0 +1,5 @@
+# Air void fraction (AVF) for Case 4: accumulated air volume / diffuser volume from the inlet. Experiment from time-averaged shadowgraphy; simulation (3D LES, polydisperse) by summing alpha_a*V_cell over cells above the threshold. Relative change w.r.t. the reference in brackets in the paper.
+configuration,exp_avf,sim_avf_alpha_gt_0p1,sim_avf_alpha_gt_0p8,exp_change_percent,sim_change_alpha_gt_0p1_percent,sim_change_alpha_gt_0p8_percent
+reference,0.105,0.168,0.0892,,,
+step,0.006,0.000328,0.0,-94.3,-99.8,-100.0
+bars,0.096,0.249,0.00732,-8.57,48.2,-91.8

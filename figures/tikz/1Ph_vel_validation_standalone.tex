@@ -1,0 +1,205 @@
+\documentclass[tikz,border=3pt]{standalone}
+\usepackage{pgfplots}
+\usepackage{xcolor}
+\usetikzlibrary{arrows.meta}
+\pgfplotsset{compat=1.18}
+\definecolor{orange}{HTML}{FFA500}
+\definecolor{black}{HTML}{000000}
+\definecolor{scienceblue}{HTML}{4169E1}
+\definecolor{sciencered}{HTML}{FF3333}
+
+% --- Zoom-box region (edit these four values to move/resize the close-up) ---
+\def\zoomxmin{3.3}
+\def\zoomxmax{4.8}
+\def\zoomymin{0.8}
+\def\zoomymax{1.23}
+
+\begin{document}
+\begin{tikzpicture}
+\begin{axis}[
+    name=mainplot,
+    width=6in, height=2.5in,
+    xlabel={$c/c_\mathrm{bulk}+x/d_\mathrm{h,u}$ [-]},
+    ylabel={$y/d_\mathrm{h,u}$ [-]},
+    xmin=-0.5, xmax=11.523810,
+    ymin=-0.059524, ymax=1.250000,
+    xtick distance=1,
+    % grid=both,
+    % grid style={dashed, draw=gray, opacity=0.5},
+    legend pos=north west,
+    legend cell align=left,
+    legend style={fill=white, fill opacity=0.9, draw opacity=1, text opacity=1, font=\fontsize{9pt}{12pt}\selectfont},
+    % title={Validation at mid-plane - Case 1 (Re=59k)},
+    % title style={font=\small},
+    label style={font=\fontsize{10pt}{12pt}\selectfont},
+    tick label style={font=\fontsize{9pt}{12pt}\selectfont},
+]
+
+\addplot [color=orange, line width=1.0pt, dotted, mark=none] table [x=x, y=y] {data/series_00.csv};
+\addlegendentry{$c = 0$}
+
+\addplot [color=black, line width=1.0pt, mark=*, mark size=1.0pt, mark options={fill=black, draw=black}] table [x=x, y=y] {data/series_01.csv};
+\addlegendentry{Exp.}
+
+\addplot [color=scienceblue, line width=1.0pt, mark=none] table [x=x, y=y] {data/series_02.csv};
+\addlegendentry{2D Sim.}
+
+\addplot [color=sciencered, line width=1.25pt, mark=none] table [x=x, y=y] {data/series_03.csv};
+\addlegendentry{3D Sim.}
+
+\addplot [color=orange, line width=1.0pt, dotted, mark=none] table [x=x, y=y] {data/series_04.csv};
+
+\addplot [color=black, line width=1.0pt, mark=*, mark size=1.0pt, mark options={fill=black, draw=black}] table [x=x, y=y] {data/series_05.csv};
+
+\addplot [color=scienceblue, line width=1.0pt, mark=none] table [x=x, y=y] {data/series_06.csv};
+
+\addplot [color=sciencered, line width=1.25pt, mark=none] table [x=x, y=y] {data/series_07.csv};
+
+\addplot [color=orange, line width=1.0pt, dotted, mark=none] table [x=x, y=y] {data/series_08.csv};
+
+\addplot [color=black, line width=1.0pt, mark=*, mark size=1.0pt, mark options={fill=black, draw=black}] table [x=x, y=y] {data/series_09.csv};
+
+\addplot [color=scienceblue, line width=1.0pt, mark=none] table [x=x, y=y] {data/series_10.csv};
+
+\addplot [color=sciencered, line width=1.25pt, mark=none] table [x=x, y=y] {data/series_11.csv};
+
+\addplot [color=orange, line width=1.0pt, dotted, mark=none] table [x=x, y=y] {data/series_12.csv};
+
+\addplot [color=black, line width=1.0pt, mark=*, mark size=1.0pt, mark options={fill=black, draw=black}] table [x=x, y=y] {data/series_13.csv};
+
+\addplot [color=scienceblue, line width=1.0pt, mark=none] table [x=x, y=y] {data/series_14.csv};
+
+\addplot [color=sciencered, line width=1.25pt, mark=none] table [x=x, y=y] {data/series_15.csv};
+
+\addplot [color=orange, line width=1.0pt, dotted, mark=none] table [x=x, y=y] {data/series_16.csv};
+
+\addplot [color=black, line width=1.0pt, mark=*, mark size=1.0pt, mark options={fill=black, draw=black}] table [x=x, y=y] {data/series_17.csv};
+
+\addplot [color=scienceblue, line width=1.0pt, mark=none] table [x=x, y=y] {data/series_18.csv};
+
+\addplot [color=sciencered, line width=1.25pt, mark=none] table [x=x, y=y] {data/series_19.csv};
+
+\addplot [color=orange, line width=1.0pt, dotted, mark=none] table [x=x, y=y] {data/series_20.csv};
+
+\addplot [color=black, line width=1.0pt, mark=*, mark size=1.0pt, mark options={fill=black, draw=black}] table [x=x, y=y] {data/series_21.csv};
+
+\addplot [color=scienceblue, line width=1.0pt, mark=none] table [x=x, y=y] {data/series_22.csv};
+
+\addplot [color=sciencered, line width=1.25pt, mark=none] table [x=x, y=y] {data/series_23.csv};
+
+\addplot [color=orange, line width=1.0pt, dotted, mark=none] table [x=x, y=y] {data/series_24.csv};
+
+\addplot [color=black, line width=1.0pt, mark=*, mark size=1.0pt, mark options={fill=black, draw=black}] table [x=x, y=y] {data/series_25.csv};
+
+\addplot [color=scienceblue, line width=1.0pt, mark=none] table [x=x, y=y] {data/series_26.csv};
+
+\addplot [color=sciencered, line width=1.25pt, mark=none] table [x=x, y=y] {data/series_27.csv};
+
+\addplot [color=orange, line width=1.0pt, dotted, mark=none] table [x=x, y=y] {data/series_28.csv};
+
+\addplot [color=black, line width=1.0pt, mark=*, mark size=1.0pt, mark options={fill=black, draw=black}] table [x=x, y=y] {data/series_29.csv};
+
+\addplot [color=scienceblue, line width=1.0pt, mark=none] table [x=x, y=y] {data/series_30.csv};
+
+\addplot [color=sciencered, line width=1.25pt, mark=none] table [x=x, y=y] {data/series_31.csv};
+
+\addplot [color=orange, line width=1.0pt, dotted, mark=none] table [x=x, y=y] {data/series_32.csv};
+
+\addplot [color=black, line width=1.0pt, mark=*, mark size=1.0pt, mark options={fill=black, draw=black}] table [x=x, y=y] {data/series_33.csv};
+
+\addplot [color=scienceblue, line width=1.0pt, mark=none] table [x=x, y=y] {data/series_34.csv};
+
+\addplot [color=sciencered, line width=1.25pt, mark=none] table [x=x, y=y] {data/series_35.csv};
+
+\addplot [color=orange, line width=1.0pt, dotted, mark=none] table [x=x, y=y] {data/series_36.csv};
+
+\addplot [color=black, line width=1.0pt, mark=*, mark size=1.0pt, mark options={fill=black, draw=black}] table [x=x, y=y] {data/series_37.csv};
+
+\addplot [color=scienceblue, line width=1.0pt, mark=none] table [x=x, y=y] {data/series_38.csv};
+
+\addplot [color=sciencered, line width=1.25pt, mark=none] table [x=x, y=y] {data/series_39.csv};
+
+\addplot [color=orange, line width=1.0pt, dotted, mark=none] table [x=x, y=y] {data/series_40.csv};
+
+\addplot [color=black, line width=1.0pt, mark=*, mark size=1.0pt, mark options={fill=black, draw=black}] table [x=x, y=y] {data/series_41.csv};
+
+\addplot [color=scienceblue, line width=1.0pt, mark=none] table [x=x, y=y] {data/series_42.csv};
+
+\addplot [color=sciencered, line width=1.25pt, mark=none] table [x=x, y=y] {data/series_43.csv};
+
+\addplot [color=orange, line width=1.0pt, dotted, mark=none] table [x=x, y=y] {data/series_44.csv};
+
+\addplot [color=black, line width=1.0pt, mark=*, mark size=1.0pt, mark options={fill=black, draw=black}] table [x=x, y=y] {data/series_45.csv};
+
+\addplot [color=scienceblue, line width=1.0pt, mark=none] table [x=x, y=y] {data/series_46.csv};
+
+\addplot [color=sciencered, line width=1.25pt, mark=none] table [x=x, y=y] {data/series_47.csv};
+
+\addplot [color=gray!60, line width=1.0pt, mark=none] table [x=x, y=y] {data/series_48.csv};
+
+% \addplot [color=gray!60, line width=1.0pt, mark=none] table [x=x, y=y] {data/series_49.csv};
+
+% --- Zoom-box outline on the main plot ---
+\draw[black, thick] (axis cs:\zoomxmin,\zoomymin) rectangle (axis cs:\zoomxmax,\zoomymax);
+% \node[red, font=\bfseries\large, anchor=north west] at (axis cs:\zoomxmin,\zoomymax) {X};
+\coordinate (zoomconnect) at (axis cs:\zoomxmax,{(\zoomymin+\zoomymax)/2});
+
+\end{axis}
+
+% --- Inset: "Close-up X" showing the same series, restricted to the zoom box ---
+\begin{axis}[
+    name=insetplot,
+    at={(mainplot.north east)}, xshift=-7cm, yshift=0.5cm, anchor=north west,
+    width=2.5in, height=2.in,
+    axis background/.style={fill=white},
+    xmin=\zoomxmin, xmax=\zoomxmax,
+    ymin=\zoomymin, ymax=\zoomymax,
+    axis line style={black, thick},
+    % grid=both,
+    % grid style={dashed, draw=gray, opacity=0.5},
+    % title={Close-up X},
+    % title style={font=\small},
+    % tick label style={font=\footnotesize},
+    % xlabel={$u/u_{bulk}+x/d_{hu}$ [-]},
+    % ylabel={$y/d_{hu}$ [-]},
+    % label style={font=\small},
+    xticklabels={},
+    yticklabels={},
+    opacity=1,
+]
+
+% Profile at x/dhu ~ 5.48
+\addplot [color=orange, line width=1.0pt, dotted, mark=none] table [x=x, y=y] {data/series_16.csv};
+\addplot [color=black, line width=1.0pt, mark=*, mark size=1pt, mark options={fill=black, draw=black}] table [x=x, y=y] {data/series_17.csv};
+\addplot [color=scienceblue, line width=1.4pt, mark=none] table [x=x, y=y] {data/series_18.csv};
+\addplot [color=sciencered, line width=1.4pt, mark=none] table [x=x, y=y] {data/series_19.csv};
+
+% Profile at x/dhu ~ 4.52
+\addplot [color=orange, line width=1.0pt, dotted, mark=none] table [x=x, y=y] {data/series_20.csv};
+\addplot [color=black, line width=1.0pt, mark=*, mark size=1pt, mark options={fill=black, draw=black}] table [x=x, y=y] {data/series_21.csv};
+\addplot [color=scienceblue, line width=1.4pt, mark=none] table [x=x, y=y] {data/series_22.csv};
+\addplot [color=sciencered, line width=1.4pt, mark=none] table [x=x, y=y] {data/series_23.csv};
+
+
+
+% Diffuser top wall for context
+\addplot [color=gray!60, line width=1.0pt, mark=none] table [x=x, y=y] {data/series_48.csv};
+
+% --- Annotation A: near-wall separation of profile 1 (edit coords to taste) ---
+\draw[black, very thick] (axis cs:3.6,0.91) circle [x radius=0.18, y radius=0.07];
+% \draw[->] (axis cs:4.35,1.00) -- (axis cs:4.52,1.11);
+\node[anchor=north, font=\fontsize{9pt}{12pt}\selectfont\bfseries] at (axis cs:3.5,1.035) {A};
+
+% --- Annotation B: near-wall separation of profile 2 (edit coords to taste) ---
+\draw[black, very thick] (axis cs:4.53,1.1) circle [x radius=0.18, y radius=0.07];
+% \draw[->] (axis cs:4.35,1.00) -- (axis cs:4.52,1.11);
+\node[anchor=north, font=\fontsize{9pt}{12pt}\selectfont\bfseries] at (axis cs:4.44,1.225) {B};
+
+\end{axis}
+
+% --- Red connector arrow from the zoom box to the inset ---
+\draw[black, thick, -{Latex[length=3mm]}] (zoomconnect) -- (insetplot.west);
+
+\end{tikzpicture}
+
+\end{document}

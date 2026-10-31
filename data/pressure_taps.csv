@@ -1,0 +1,10 @@
+# Bottom-wall pressure transducer locations, mid-span; x measured from the diffuser inlet, d_h,u = 42 mm.
+tap,x_over_dhu
+P1,-1.5
+P2,0
+P3,1.6
+P4,3.17
+P5,4.75
+P6,6.3
+P7,7.9
+P8,10.1

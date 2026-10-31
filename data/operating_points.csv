@@ -1,0 +1,8 @@
+# Operating points. Experiment and 2D URANS inlet air volume fraction differ because the 2D setup cannot represent the secondary flow / spanwise air concentration; the 2D value was adjusted to approximately match the measured accumulation size. Case 4 is the 3D LES case.
+case,Re_w,alpha_a_inlet_exp_percent,alpha_a_inlet_sim2d_percent,simulated_in_3d_les
+1,59530,0,0,single-phase
+2,78330,0,0,no
+3,59530,0.074,0.1,no
+4,59530,0.223,0.2,yes
+5,78330,0.056,0.1,no
+6,78330,0.169,0.2,no

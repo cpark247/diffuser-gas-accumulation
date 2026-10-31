@@ -1,0 +1,8 @@
+# Constants of the population balance kernels (original values; C1 corrected as in the paper). Coalescence: Prince & Blanch (1990) with C_Gamma amplification (Liao et al. 2015); binary breakup: Luo & Svendsen (1996).
+model,parameter,value,unit
+coalescence,C1,0.356,-
+coalescence,h0,0.0001,m
+coalescence,hf,1e-08,m
+breakup,C4,0.923,-
+breakup,C5,11.4,-
+breakup,beta,2.05,-

@@ -1,0 +1,11 @@
+# Computational grids (structured hexahedral). 2D grid study on the reference configuration; G2 selected for all 2D configurations.
+setup,configuration,grid,cells,notes
+2D URANS,reference,G1,3000,
+2D URANS,reference,G2,9000,selected; y+ 20-45
+2D URANS,reference,G3,35000,
+2D URANS,bars,G2,13000,refined near structures
+2D URANS,step,G2,10000,refined near structures
+3D LES,reference,,2500000.0,"adapted from Nguyen et al. (2023); mean y+ ~3, max <5"
+3D LES,bars,,2900000.0,
+3D LES,step,,2900000.0,
+3D LES precursor,"duct 60 d_h,u",,13000000.0,"two-phase precursor; single-phase precursor 4*pi*d_h,u periodic"

@@ -1,0 +1,14 @@
+# Air accumulation size relative to the reference configuration [%]. Experiment vs 2D URANS (SST). "shifted_bars": bars moved upstream in the simulation only (experiment column repeats the original bars). Source: paper Fig. 2D air void fraction bar graphs.
+configuration,case,exp_percent_of_reference,sim2d_percent_of_reference
+step,3,4.7619,0.9012
+step,4,5.7143,28.6552
+step,5,9.0909,9.4737
+step,6,4.0000,2.0000
+bars,3,33.3333,125.3033
+bars,4,91.4286,82.7586
+bars,5,27.2727,190.1316
+bars,6,20.0000,109.3750
+shifted_bars,3,33.3333,4.9740
+shifted_bars,4,91.4286,3.8966
+shifted_bars,5,27.2727,30.5921
+shifted_bars,6,20.0000,1.5625

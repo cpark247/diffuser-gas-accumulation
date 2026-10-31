@@ -1,25 +1,14 @@
-# OpenFOAM results (keep setups only: 0.orig/ or 0/, constant/, system/)
-processor*/
-[1-9]*/
-0.[0-9]*/
-postProcessing/
-**/constant/polyMesh/
-**/constant/extendedFeatureEdgeMesh/
-**/constant/boundaryData/
-log.*
-*.foam
-*.OpenFOAM
-*.vtk
-VTK/
-dynamicCode/
-
-# Keep sampled profiles that are needed to rebuild the figures:
-# copy them to cases/<case>/data/ instead of committing postProcessing/
-
 # Python
 __pycache__/
 *.pyc
 .venv/
+.pytest_cache/
+
+# LaTeX build files from compiling figures/tikz
+figures/tikz/*.aux
+figures/tikz/*.log
+figures/tikz/*.pdf
+figures/tikz/*.synctex.gz
 
 # Editors / OS
 .vscode/
@@ -29,6 +18,3 @@ __pycache__/
 *~
 .DS_Store
 Thumbs.db
-
-# Experimental data that may not be redistributed (see data/README.md)
-figures/data/experiment_private/
