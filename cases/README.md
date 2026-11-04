@@ -1,13 +1,13 @@
 # Simulation setups
 
-The OpenFOAM case dictionaries and field data are not included in this repository. This page records the setups from the paper in enough detail to rebuild them with OpenFOAM Foundation v9 and the solver family from [OpenFOAM-PhD-Extensions](https://github.com/cpark247/OpenFOAM-PhD-Extensions).
+The OpenFOAM case dictionaries and field data are not included in this repository. This page records the setups from the paper in enough detail to rebuild them with OpenFOAM Foundation v9 and the solver family from [openfoam9-multiphase-les-extensions](https://github.com/cpark247/openfoam9-multiphase-les-extensions).
 
 ## Common to all cases
 
 | Item | Setting |
 |---|---|
 | Phases | Water (continuous) and air (dispersed or continuous), isothermal, incompressible, no mass transfer, σ = 0.07275 N/m |
-| Solver | Hybrid Euler–Euler/VoF extension of `multiphaseEulerFoam` with population balance (solver family `multiphaseEulerFoamHSM` in OpenFOAM-PhD-Extensions) |
+| Solver | Hybrid Euler–Euler/VoF extension of `multiphaseEulerFoam` with population balance (solver family `multiphaseEulerFoamHSM` in openfoam9-multiphase-les-extensions) |
 | Blending | C<sub>α</sub>: a<sub>B</sub> = 35, a<sub>min</sub> = 0.1, a<sub>max</sub> = 0.9; C<sub>β</sub>: b<sub>min</sub> = 10⁻⁴, b<sub>max</sub> = 0.8 |
 | Interfacial forces | Schiller–Naumann drag with d<sub>32</sub>; virtual mass C<sub>vm</sub> = 0.5; surface tension (CSF) blended with C<sub>α</sub> |
 | Population balance | 10 classes, 0.25–4.75 mm, Δd = 0.5 mm; Prince–Blanch coalescence with C<sub>Γ</sub>; Luo–Svendsen binary breakup; constants in [`data/pbm_kernel_constants.csv`](../data/pbm_kernel_constants.csv) |

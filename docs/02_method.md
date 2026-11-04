@@ -87,7 +87,7 @@ Using the instantaneous resolved strain rate instead of the fluctuating part avo
 
 ## 2.4 Numerics
 
-- Implementation: extension of `multiphaseEulerFoam` in **OpenFOAM Foundation v9** (blending functions, interface compression, surface tension, drag switch, population balance coupling); see [OpenFOAM-PhD-Extensions](https://github.com/cpark247/OpenFOAM-PhD-Extensions).
+- Implementation: extension of `multiphaseEulerFoam` in **OpenFOAM Foundation v9** (blending functions, interface compression, surface tension, drag switch, population balance coupling); see [openfoam9-multiphase-les-extensions](https://github.com/cpark247/openfoam9-multiphase-les-extensions).
 - Pressure–velocity coupling: PIMPLE with pressure relaxation; up to 20 outer iterations with 3 PISO correctors each, until residuals drop by four orders of magnitude.
 - Phase fractions: explicit MULES with 3 sub-cycles at the start of each time step; then momentum, pressure, turbulence and finally the population balance.
 - Time step: max CFL 1.0 (URANS) and 0.3 (LES).

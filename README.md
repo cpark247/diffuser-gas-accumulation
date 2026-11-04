@@ -2,14 +2,14 @@
 
 **Bubbly water flowing through a horizontal diffuser separates, and the air collects in a pocket that blocks the passage, the same mechanism that degrades centrifugal pumps conveying gas–liquid mixtures. Can a small structure upstream prevent it, and why does it work?** This repository presents the study that answers this with 2D URANS and 3D large-eddy simulations of a hybrid Euler–Euler/VoF solver with population balance, validated against experiments.
 
-[![SSRN preprint](https://img.shields.io/badge/preprint-SSRN%207649860-blue)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7649860)
+[![DOI](https://img.shields.io/badge/DOI-10.2139%2Fssrn.7649860-blue)](http://dx.doi.org/10.2139/ssrn.7649860)
 ![OpenFOAM v9](https://img.shields.io/badge/OpenFOAM-Foundation%20v9-2c7bb6)
 ![Python](https://img.shields.io/badge/post--processing-Python-3776ab)
 
 ![Graphical abstract](docs/graphical_abstract.png)
 <sub>*Graphical abstract: a simplified graphic for illustration. Shapes, curves and some numbers are approximate; the exact values are given in [Results: 3D LES](docs/05_3d_les.md) and in [`data/`](data).*</sub>
 
-> C. Park, M. Mansour, D. Thévenin, R. Skoda. **Passive Mitigation of Gas Accumulation by Surface Structures in Diverging Flow Channels: A Three-Dimensional Two-Phase Flow Simulation Study.** Preprint, [SSRN 7649860](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7649860), 2026.
+> C. Park, M. Mansour, D. Thévenin, R. Skoda. **Passive Mitigation of Gas Accumulation by Surface Structures in Diverging Flow Channels: A Three-Dimensional Two-Phase Flow Simulation Study.** Preprint, [SSRN 7649860](http://dx.doi.org/10.2139/ssrn.7649860), 2026.
 
 ## Key findings
 
@@ -47,7 +47,7 @@
 | Inflow (3D) | Two-phase precursor LES of a 60 d<sub>h,u</sub> duct (≈ 13 M cells), looped as time-resolved inlet |
 | Grids | 2D: 9 000–13 000 cells. 3D: 2.5–2.9 M cells, mean y⁺ ≈ 3, mean Δ/η below ≈ 15 |
 | Validation | Shadowgraphy (air pocket), bubble size distributions, wall pressure, LDA velocity (single phase) |
-| Code | OpenFOAM Foundation v9 + [OpenFOAM-PhD-Extensions](https://github.com/cpark247/OpenFOAM-PhD-Extensions) (solver family `multiphaseEulerFoamHSM`) |
+| Code | OpenFOAM Foundation v9 + [openfoam9-multiphase-les-extensions](https://github.com/cpark247/openfoam9-multiphase-les-extensions) (solver family `multiphaseEulerFoamHSM`) |
 
 ## Reproducing the plots
 
@@ -66,7 +66,7 @@ Simulations, post-processing and analysis: C. Park and R. Skoda (Chair of Hydrau
 
 ## Related
 
-- [OpenFOAM-PhD-Extensions](https://github.com/cpark247/OpenFOAM-PhD-Extensions): solver family and models used here
+- [openfoam9-multiphase-les-extensions](https://github.com/cpark247/openfoam9-multiphase-les-extensions): solver family and models used here
 - [turbulence-validation-OF9](https://github.com/cpark247/turbulence-validation-OF9): preliminary single-phase turbulence-modelling studies from the same doctoral project (not used for these results)
 
 ## Acknowledgements
